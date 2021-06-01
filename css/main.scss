@@ -1,13 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
+$color-dark: #242831;
+$color-light: #f5f5f5;
+$phone: 840px;
+
+@mixin phone {
+  @media (max-width: #{$phone}) {
+    @content;
+  }
+}
+
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 }
-
-$color-dark: #242831;
-$color-light: #f5f5f5;
 
 body {
   background-color: $color-dark;
@@ -15,7 +22,7 @@ body {
   color: $color-light;
 }
 
-header {
+nav {
   height: 1.5 em;
   width: 100 vw;
 
@@ -27,6 +34,9 @@ header {
     list-style: none;
     display: inline-block;
     margin: 0.25em 5em 0 2em;
+    @include phone {
+      margin: 0.25em 6vw 0 0;
+    }
 
     a {
       text-decoration: none;
@@ -35,9 +45,11 @@ header {
   }
 }
 
-h1 {
-  text-align: center;
-  color: $color-light;
+header {
+  h1 {
+    text-align: center;
+    color: $color-light;
+  }
 }
 
 .container {
