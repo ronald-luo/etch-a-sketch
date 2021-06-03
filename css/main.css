@@ -17,6 +17,16 @@ nav {
   width: 100 vw;
 }
 
+@media (max-width: 840px) {
+  nav {
+    display: -ms-grid;
+    display: grid;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
 nav #rluo {
   font-size: 35px;
 }

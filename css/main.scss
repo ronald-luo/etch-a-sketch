@@ -25,6 +25,10 @@ body {
 nav {
   height: 1.5 em;
   width: 100 vw;
+  @include phone {
+    display: grid;
+    justify-content: center;
+  }
 
   #rluo {
     font-size: 35px;
