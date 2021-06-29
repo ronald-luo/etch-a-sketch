@@ -1,18 +1,38 @@
-// your javascript file
-const handleForm = (ev) => {
-    ev.preventDefault() // stops form submission
-    let search = {
-        inquiry: document.getElementById("value-field").value
-    }
-    let currentBlocks = document.getElementsByClassName('content').length
-    if (currentBlocks > 0) { // there is something already there
-        //console.log(document.getElementsByClassName('content'))
+// document.addEventListener('DOMContentLoaded', () => {
+//     document.getElementById('btn').addEventListener('click', handleForm)
+// });
+
+// const handleForm = (ev) => {
+//     ev.preventDefault(); // stops page refresh
+    
+
+//     let search = {
+//         inquiry: document.getElementById("value-field").value
+//     }
+//     let currentBlocks = document.getElementsByClassName('content').length
+//     if (currentBlocks > 0) { // there is something already there
+//         //console.log(document.getElementsByClassName('content'))
+//         clear(currentBlocks)
+//         sketchCreator(search.inquiry)
+//     } else {
+//         sketchCreator(search.inquiry)
+//     }
+// };
+sketchCreator(5);
+(function currentValue () {
+    let slider = document.getElementById("value-field");
+    let output = document.getElementById("form-value");
+    
+    output.innerHTML = slider.value;
+    
+    slider.oninput = function() { 
+        let currentBlocks = document.getElementsByClassName('content').length
+        output.innerHTML = this.value; 
         clear(currentBlocks)
-        sketchCreator(search.inquiry)
-    } else {
-        sketchCreator(search.inquiry)
+        sketchCreator(slider.value)
     }
-}
+})();
+
 
 function clear (blocks) {
     for (let i = 0; i < blocks; i++) {
@@ -20,10 +40,6 @@ function clear (blocks) {
         elem.parentNode.removeChild(elem)
     }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('btn').addEventListener('click', handleForm)
-})
 
 function sketchCreator (rows) {
     const container = document.querySelector('#container');
@@ -40,7 +56,6 @@ function sketchCreator (rows) {
     squares.forEach((square) => {
         square.addEventListener('mouseover', (e) => {
             e.target.style.background = colorGenerator()
-            console.log(e)
         });
     })
     
